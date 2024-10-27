@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommendations</title>
+    <style>
+        body {
+            background-color: #000000; /* Black background */
+            color: #ffffff; /* White text */
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ff4500; /* Orange color for the title */
+        }
+
+        .recommendation-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .movie-card {
+            margin: 10px;
+            background-color: #1a1a1a; /* Dark gray card background */
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0px 0px 10px 2px rgba(255, 69, 0, 0.7); /* Glowing orange shadow */
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .movie-card:hover {
+            transform: scale(1.05);
+        }
+
+        .movie-card p {
+            margin: 10px 0;
+            font-size: 1.2em;
+            color: #ffffff;
+        }
+
+        .movie-card img {
+            width: 200px;
+            border-radius: 5px;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #ff4500; /* Orange button */
+            color: #ffffff; /* White text on button */
+            border-radius: 5px;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #e63900; /* Darker orange on hover */
+        }
+
+        a:active {
+            background-color: #cc2c00; /* Even darker orange on click */
+        }
+    </style>
+</head>
+<body>
+    <h1>Recommendations for {{ request.form.movie_name }}</h1>
+    <div class="recommendation-container">
+        {% for name, poster in zip(movie_names, movie_posters) %}
+            <div class="movie-card">
+                <p>{{ name }}</p>
+                <img src="{{ poster }}" alt="{{ name }}">
+            </div>
+        {% endfor %}
+    </div>
+    <a href="/">Go Back</a>
+</body>
+</html>

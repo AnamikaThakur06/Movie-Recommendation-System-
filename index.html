@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommender System</title>
+    <style>
+        body {
+            background-color: #000000; /* Black background */
+            color: #ffffff; /* White text */
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            flex-direction: column;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 100px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ff4500; /* Orange color for the title */
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #1a1a1a; /* Dark gray form background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px 5px rgba(255, 69, 0, 0.7); /* Glowing orange shadow */
+        }
+
+        label {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        select {
+            padding: 10px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+            margin-bottom: 20px;
+            background-color: #333333; /* Dark gray dropdown background */
+            color: #ffffff; /* White text in dropdown */
+            width: 300px;
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            background-color: #ff4500; /* Orange button */
+            color: #ffffff; /* White text on button */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        button:hover {
+            background-color: #e63900; /* Darker orange on hover */
+        }
+
+        button:active {
+            background-color: #cc2c00; /* Even darker orange on click */
+        }
+    </style>
+</head>
+<body>
+    <h1>Movie Recommender System</h1>
+    <form action="/recommend" method="POST">
+        <label for="movie_name">Type or select a movie from the dropdown:</label>
+        <select name="movie_name" id="movie_name">
+            {% for movie in movies %}
+                <option value="{{ movie }}">{{ movie }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Recommend</button>
+    </form>
+</body>
+</html>
